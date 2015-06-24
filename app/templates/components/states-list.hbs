@@ -1,12 +1,28 @@
 <table>
-    <tr>
-        <th>Name</th>
-        <th>Abbreviation</th>
-    </tr>
+    {{#if isReversed}}
+        <tr>
+            <th {{action 'normalList' usStates on='click'}}>Name</th>
+            <th {{action 'normalList' usStates on='click'}}>Abbreviation</th>
+        </tr>
+
+      {{#each state in usStates}}
+          <tr>
+              <td>{{state.name}}</td>
+              <td>{{state.abbrev}}</td>
+          </tr>
+      {{/each}}
+    {{else}}
+        <tr>
+            <th {{action 'reverseList' usStates on='click'}}>Name</th>
+            <th {{action 'reverseList' usStates on='click'}}>Abbreviation</th>
+        </tr>
+
+      {{#each state in usStates}}
+          <tr>
+              <td>{{state.name}}</td>
+              <td>{{state.abbrev}}</td>
+          </tr>
+      {{/each}}
+    {{/if}}
+
 </table>
-{{#each state in usStates}}
- <tr>
-     <td>{{state.name}}</td>
-     <td>{{state.abbrev}}</td>
- </tr>
-{{/each}}
